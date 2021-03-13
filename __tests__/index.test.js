@@ -1,47 +1,47 @@
 const fs = require('fs')
-const { check_encoding, ENCODED, UNENCODED } = require('../')
+const { check_encoding } = require('../')
 const composerData = require('./from_composer.json')
 const { encode } = require('html-entities')
 
 const test_data = [
-  ['<p>unencoded HTML</p>', UNENCODED, 'Simple unencoded HTML'],
-  ['<img onload="alert(`hiya!`)">', UNENCODED, 'Unencoded img with onload'],
+  ['<p>unencoded HTML</p>', false, 'Simple unencoded HTML'],
+  ['<img onload="alert(`hiya!`)">', false, 'Unencoded img with onload'],
   [
     '&lt;img src="http://foo.com/bar.jpg" /&gt;',
-    ENCODED,
+    true,
     'Encoded img without',
   ],
   [
     '&lt;img onload="alert(`hiya!`)"&gt;',
-    UNENCODED,
+    false,
     'Encoded img with onload unescaped quotes',
   ],
   [
     '&lt;img onload=&#34;alert(`hiya!`)&#34;&gt;',
-    ENCODED,
+    true,
     'Encoded img with onload escaped quotes',
   ],
   [
     '&lt;img onload=&quot;alert(`hiya!`)&quot;&gt;',
-    ENCODED,
+    true,
     'Encoded img with onload name-escaped quotes',
   ],
-  ['&lt;p&gt;already encoded!&lt;/p&gt;', ENCODED, 'Simple encoded HTML'],
-  ['&lt;pre&gt;This > that&lt;/pre&gt;', ENCODED, 'Mixed encoding.'],
-  ['document.write("foo!")', UNENCODED, 'Simple document.write() call'],
+  ['&lt;p&gt;already encoded!&lt;/p&gt;', true, 'Simple encoded HTML'],
+  ['&lt;pre&gt;This > that&lt;/pre&gt;', true, 'Mixed encoding.'],
+  ['document.write("foo!")', false, 'Simple document.write() call'],
   [
     'document.write("<scr"+"ipt>alert(\\"foo\\")</scr"+"ipt>")',
-    UNENCODED,
+    false,
     'Alerting document.write() call',
   ],
   [
     '&lt;p&gt;<script>alert("foo!");</script>&lt;/&gt;',
-    UNENCODED,
+    false,
     'Encoded everything but verbatim script tag',
   ],
   [
     '&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<script>alert("gotcha?!")</script>',
-    UNENCODED,
+    false,
     'Someone trying to screw with the algorithm',
   ],
 ]
@@ -50,7 +50,7 @@ test.each(test_data)('check_encoding( "%s" ) == %s // %s', (txt, expected) =>
   expect(check_encoding(txt)).toBe(expected),
 )
 test.each(composerData)('composer data «%s» == %p', (name, expected, obj) =>
-  expect(check_encoding(obj.content)).toBe(expected ? ENCODED : UNENCODED),
+  expect(check_encoding(obj.content)).toBe(expected ? true : false),
 )
 
 const pbTests = fs
@@ -64,8 +64,8 @@ test.each(pbTests)(`pagebuilder data «%s»`, (name) => {
   const encodedXml = encode(rawData, { level: 'xml' })
   const encodedNonPrintable = encode(rawData, { mode: 'nonAsciiPrintable' })
 
-  expect(check_encoding(rawData)).toBe(UNENCODED)
-  expect(check_encoding(encodedAll)).toBe(ENCODED)
-  expect(check_encoding(encodedXml)).toBe(ENCODED)
-  expect(check_encoding(encodedNonPrintable)).toBe(ENCODED)
+  expect(check_encoding(rawData)).toBe(false)
+  expect(check_encoding(encodedAll)).toBe(true)
+  expect(check_encoding(encodedXml)).toBe(true)
+  expect(check_encoding(encodedNonPrintable)).toBe(true)
 })

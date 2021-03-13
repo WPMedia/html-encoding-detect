@@ -1,6 +1,5 @@
-const ENCODED = Symbol('encoded')
-const UNENCODED = Symbol('unencoded')
-const UNDECIDED = Symbol('undecided')
+const ENCODED = true
+const UNENCODED = false
 const FAILSAFE = Symbol('failsafe')
 
 /*
@@ -76,8 +75,5 @@ const check_encoding = (txt) => {
 }
 
 module.exports = {
-  ENCODED,
-  UNENCODED,
-  UNDECIDED,
   check_encoding,
 }
