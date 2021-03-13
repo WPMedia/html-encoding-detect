@@ -1,0 +1,42 @@
+[
+  [
+    "composer-iframe-unencoded",
+    false,
+    {
+      "_id": "6I363IMUFNBY5NABP6AQBEDGRA",
+      "type": "raw_html",
+      "additional_properties": {
+        "_id": "SUOIU3JROFH6TB5XKTJH5CFEZY",
+        "comments": []
+      },
+      "content": "<iframe width=\"800\" height=\"1006\" data-original-width=\"800\" data-original-height=\"1006\" src=\"https://www.thinglink.com/card/1424533678641381378\" type=\"text/html\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen scrolling=\"no\"></iframe><script async src=\"//cdn.thinglink.me/jse/responsive.js\"></script>"
+    }
+  ],
+  [
+    "boston-globe-sample",
+    false,
+    {
+      "_id": "3T6EAFRJNFGZVOSY3U4JCDJ4EM",
+      "type": "raw_html",
+      "additional_properties": {
+        "_id": "TI6TPMNT3JETLOLRXCOQRFSZF4",
+        "comments": []
+      },
+      "content": "<div class=\"flourish-embed flourish-chart\" data-src=\"visualisation/5369193\"><script src=\"https://public.flourish.studio/resources/embed.js\"></script></div>"
+    }
+  ],
+  [
+    "hit-me-with-your-better-shot",
+    false,
+    {
+      "_id": "DCDFVPQDEJHRDM4SIXNGMYNKWY",
+      "type": "raw_html",
+      "additional_properties": {
+        "_id": "4I5GM4EKSZCX5OYCIOJIS4XNLM",
+        "comments": [],
+        "inline_comments": []
+      },
+      "content": "<div class=\"fragment\"><style type=\"text/css\">\r\n      @media screen and (min-width: 1px) and (max-width: 650px) {\r\n        #big {display: none;}\r\n        #small {display: block;}\r\n      }\r\n      \r\n      @media screen and (min-width: 650px) {\r\n        #big {display: block;}\r\n        #small {display: none;}\r\n      }\r\n      \r\n      #big img {\r\n        width: 100%;\r\n      }\r\n      \r\n      #small div {\r\n        width: 100%;\r\n        margin-left: auto;\r\n        margin-right: auto;\r\n      }\r\n      \r\n      .center {\r\n        display: block;\r\n        margin: 0 auto;\r\n      }\r\n</style>\r\n<div id=\"gf\">\r\n    <img id=\"big\" src=\"https://cloudfront-us-east-1.images.arcpublishing.com/bostonglobe/TYNUTKCDSRBR7K7AC6FMOWNX6A.jpg\">\r\n    <div id=\"small\">\r\n        <img class=\"center\" src=\"https://cloudfront-us-east-1.images.arcpublishing.com/bostonglobe/5IBDBXWZZVFJPOPO5E5UOJ32SY.jpg\">\r\n    </div>\r\n</div></div>"
+    }
+  ]
+]

@@ -1,0 +1,36 @@
+<script src="https://widgets.media.weather.com/wxwidget.loader.js?cid=138459890"></script>
+  <style>
+    .the-map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  </style>
+  <div style="position: relative; z-index: 4;">
+    <div style="width:100%; height:480px;">
+<wx-widget type="map"
+memberid="1353"
+language="en-US"
+zoomlevel="10"
+fullscreen="false"
+mapid="0011"
+latitude="30.3305"
+longitude="-81.6677"
+menuitems="2002,2001"
+layers="0794,0131,0777">
+</wx-widget>
+</div>
+    <div class="the-map-overlay" onclick="this.style.display = 'none'">
+      <span>Click to Interact</span>
+    </div>
+  </div>

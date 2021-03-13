@@ -1,0 +1,54 @@
+<div class="footer__legal">
+  <style>
+    .footer__legal {
+      margin: 0 5% 0 5%;
+      padding: 0 0 16px 0;
+      font-family: "Droid Sans", sans-serif;
+      font-size: 12px;
+      line-height: 1;
+    }
+    .footer__legal a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .footer__legal p,
+    .footer__legal__copyright,
+    .footer__legal__rovi {
+      margin: 0 0 16px 0;
+    }
+    .footer__legal__rovi {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .footer__legal__rovi img {
+      margin: 0 15px 0 0;
+    }
+    @media (max-width: 767px) {
+      .footer__legal {
+        font-size: 14px;
+      }
+      .footer__legal__rovi {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .footer__legal__rovi img {
+        margin: 0 15px 15px 0;
+      }
+    }
+  </style>
+  <div class="footer__legal__copyright">
+    <p>&copy; <span class="current-year"></span> <a href="https://www.coxmediagroup.com" target="_blank">Cox Media Group</a>. All Rights Reserved. By using this website, you accept the terms of our <a href=/visitor-agreement>Visitor Agreement</a> and <a href=/privacy-policy>Privacy Policy</a>, and understand your options regarding <a href=/privacy-policy/#ad-choices>Ad Choices</a>. Learn about <a href="https://cmg.jobs.net" target="_blank"> careers</a> at Cox Media Group.</p>
+  </div>
+  <div class="footer__legal__rovi">
+    <img src="https://arc-anglerfish-arc2-prod-cmg.s3.amazonaws.com/public/VZ73PSNWRJDNPDZ7KLNYFL3SCA.png" alt="Rovi logo" />
+    <span>Portions of Content Provided by Rovi Corporation. &copy; <span class="current-year"></span> Rovi Corporation</span>
+  </div>
+  <script>
+    var currentYear = new Date().getFullYear();
+    document.querySelectorAll(".current-year").forEach(function(el) {
+      el.innerText = currentYear;
+    });
+  </script>
+</div>
+<br></br>
