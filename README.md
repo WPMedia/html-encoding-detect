@@ -59,7 +59,7 @@ setIgnoredEntities( [/&#x[0-7]\w\b/smxg, /&#(\d{1,2}|[0-1][1-2]\d)\b/smxg ], fal
 
 ## Special note on UTF-8
 
-If you're using UTF-8, and you run into issues, please submit an issue with samples so that I can see what you're running. While most characters in UTF-8 can have an encoded value in HTML entity encoding (e.g. 긴in Korean could be represented as `&#xAE34`), they are usually encoded literally rather than in entity encoding.
+If you're using UTF-8, and you run into issues, please submit an issue with samples so that I can see what you're running. While most characters in UTF-8 can have an encoded value in HTML entity encoding (e.g. `긴` in Korean could be represented as `&#xAE34`), they are usually encoded literally rather than in entity encoding.
 
 ## Author
 
